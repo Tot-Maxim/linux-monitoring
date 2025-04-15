@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus Monitoring System
+After=network.target local-fs.target
+Requires=local-fs.target
+
+[Service]
+User=prometheus
+Group=prometheus
+ExecStart=/opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml --storage.tsdb.path=/opt/prometheus/data
+
+[Install]
+WantedBy=multi-user.target
